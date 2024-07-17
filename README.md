@@ -15,6 +15,6 @@
   <a href="#-license">License</a>
 </p>
 <p align="center">
-  Made with ❤️ by Frank Vocatura •
+  Made by Frank Vocatura •
   <a href="https://github.com/frankvoc">GitHub Profile</a>
 </p>

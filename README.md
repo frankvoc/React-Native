@@ -1,6 +1,6 @@
 # React-Native
 <p align="center">
-  <img src="header.png" width="600" alt="Project Logo">
+  <img src="img/RNGif.gif" width="600" alt="Project Logo">
 </p>
 <h1 align="center">Project Name</h1>
 <p align="center">

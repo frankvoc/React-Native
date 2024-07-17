@@ -1,11 +1,8 @@
 # React-Native
+<h1 align="center">SE380 React Native</h1>
 <p align="center">
-  <img src="img/RNGif.gif" width="600" alt="Project Logo">
-</p>
-<h1 align="center">Project Name</h1>
-<p align="center">
-  <strong>Brief project description goes here.</strong><br>
-  Additional project tagline or description.
+  <strong>React Native work and projects.</strong><br>
+  <i>More soon...</i>
 </p>
 <p align="center">
   <a href="#-features">Features</a> •

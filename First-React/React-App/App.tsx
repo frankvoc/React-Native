@@ -6,19 +6,19 @@ export default function App() {
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
-        <Image source={{ uri: 'https://your-profile-image-url.com' }} style={styles.profileImage} />
+        <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/640px-Smiley.svg.png' }} style={styles.profileImage} />
         <Text style={styles.headerText}>Frank's Portfolio</Text>
         <Text style={styles.introText}>Hi, I'm Frank. A passionate developer.</Text>
 
         <View style={styles.section}>
           <Text style={styles.sectionHeader}>Projects</Text>
           <View style={styles.projectItem}>
-            <Image source={{ uri: 'https://i.imgur.com/IvbxQGF.png' }} style={styles.projectImage} />
+            <Image source={{ uri: 'https://i.imgur.com/oQpwTy7.png' }} style={styles.projectImage} />
             <Text style={styles.projectTitle}>Project 1</Text>
             <Text style={styles.projectDescription}>Description of project 1.</Text>
           </View>
           <View style={styles.projectItem}>
-            <Image source={{ uri: 'https://your-project-image-url-2.com' }} style={styles.projectImage} />
+            <Image source={{ uri: 'https://i.imgur.com/yOcN2P3.png' }} style={styles.projectImage} />
             <Text style={styles.projectTitle}>Project 2</Text>
             <Text style={styles.projectDescription}>Description of project 2.</Text>
           </View>

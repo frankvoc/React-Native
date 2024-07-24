@@ -1,41 +1,72 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, ScrollView, View, Image } from 'react-native';
+import { Text, Card, ListItem, Icon } from 'react-native-elements';
 
 export default function App() {
+  const projects = [
+    {
+      title: 'This is a placeholder',
+      description: 'Description of project 1.',
+      image: 'https://i.imgur.com/oQpwTy7.png',
+    },
+    {
+      title: 'This is also a placeholder',
+      description: 'Description of project 2.',
+      image: 'https://i.imgur.com/yOcN2P3.png',
+    },
+  ];
+
+  const skills = ['Skill 1', 'Skill 2', 'Skill 3'];
+  const contactDetails = [
+    { type: 'email', text: 'Email: frank@example.com', icon: 'email' },
+    { type: 'linkedin', text: "LinkedIn: I don't have one", icon: 'email' },
+  ];
+
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/640px-Smiley.svg.png' }} style={styles.profileImage} />
-        <Text style={styles.headerText}>Frank's Portfolio</Text>
-        <Text style={styles.introText}>Hi, I'm Frank. A passionate developer.</Text>
+        <Text h2 style={styles.headerText}>Frank's Portfolio</Text>
+        <Text style={styles.introText}>Hi, I'm Frank.</Text>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>Projects</Text>
-          <View style={styles.projectItem}>
-            <Image source={{ uri: 'https://i.imgur.com/oQpwTy7.png' }} style={styles.projectImage} />
-            <Text style={styles.projectTitle}>Project 1</Text>
-            <Text style={styles.projectDescription}>Description of project 1.</Text>
-          </View>
-          <View style={styles.projectItem}>
-            <Image source={{ uri: 'https://i.imgur.com/yOcN2P3.png' }} style={styles.projectImage} />
-            <Text style={styles.projectTitle}>Project 2</Text>
-            <Text style={styles.projectDescription}>Description of project 2.</Text>
-          </View>
-        </View>
+        <Card containerStyle={styles.card}>
+          <Card.Title>Projects</Card.Title>
+          <Card.Divider />
+          {projects.map((project, index) => (
+            <View key={index}>
+              <Card.Image source={{ uri: project.image }} />
+              <Card.Title>{project.title}</Card.Title>
+              <Text style={styles.projectDescription}>{project.description}</Text>
+              <Card.Divider />
+            </View>
+          ))}
+        </Card>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>Skills</Text>
-          <Text style={styles.skillItem}>Skill 1</Text>
-          <Text style={styles.skillItem}>Skill 2</Text>
-          <Text style={styles.skillItem}>Skill 3</Text>
-        </View>
+        <Card containerStyle={styles.card}>
+          <Card.Title>Skills</Card.Title>
+          <Card.Divider />
+          {skills.map((skill, index) => (
+            <ListItem key={index} bottomDivider>
+              <ListItem.Content>
+                <ListItem.Title>{skill}</ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          ))}
+        </Card>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>Contact</Text>
-          <Text style={styles.contactItem}>Email: frank@example.com</Text>
-          <Text style={styles.contactItem}>LinkedIn: linkedin.com/in/frank</Text>
-        </View>
+        <Card containerStyle={styles.card}>
+          <Card.Title>Contact</Card.Title>
+          <Card.Divider />
+          {contactDetails.map((contact, index) => (
+            <ListItem key={index} bottomDivider>
+              <Icon name={contact.icon} type="material" />
+              <ListItem.Content>
+                <ListItem.Title>{contact.text}</ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          ))}
+        </Card>
 
         <StatusBar style="auto" />
       </View>
@@ -49,7 +80,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     padding: 20,
   },
@@ -68,41 +98,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 20,
   },
-  section: {
+  card: {
     width: '100%',
-    marginVertical: 20,
-  },
-  sectionHeader: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  projectItem: {
-    backgroundColor: '#e0e0e0',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-    alignItems: 'center',
-  },
-  projectImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  projectTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    marginVertical: 10,
   },
   projectDescription: {
-    fontSize: 14,
-  },
-  skillItem: {
-    fontSize: 16,
-    marginVertical: 5,
-  },
-  contactItem: {
-    fontSize: 16,
-    marginVertical: 5,
+    marginVertical: 10,
   },
 });

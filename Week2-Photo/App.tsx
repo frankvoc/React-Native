@@ -6,8 +6,8 @@ interface ImageData {
   url: string;
 }
 const imageData: ImageData[] = [];
-for (let i = 1; i < 70; i++) {
-  imageData.push({ id: i, url: `https://picsum.photos/id/${i}/200` });
+for (let i = 1; i < 71; i++) {
+  imageData.push({ id: i, url: `https://picsum.photos/id/${i}/200`});
 }
 const App = () => {
   const [filteredPhotos, setFilteredPhotos] = useState<ImageData[]>(imageData);
@@ -22,7 +22,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.searchInput}
-        placeholder="Search by ID"
+        placeholder="Search by ID."
         value={searchTerm}
         onChangeText={setSearchTerm}/>
       <FlatList

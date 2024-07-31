@@ -5,7 +5,6 @@ interface ImageData {
   id: number;
   url: string;
 }
-
 const imageData: ImageData[] = [];
 for (let i = 1; i < 70; i++) {
   imageData.push({ id: i, url: `https://picsum.photos/id/${i}/200` });
@@ -37,8 +36,6 @@ const App = () => {
         )}/>
       {selectedPhoto && (
         <Modal
-          visible={true}
-          transparent={true}
           onRequestClose={() => setSelectedPhoto(null)}
         >
           <View style={styles.modalBackground}>

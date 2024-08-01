@@ -47,7 +47,7 @@ const App = () => {
       )}
     </SafeAreaView>
   );
-};
+};//change
 const styles = StyleSheet.create({
   container: {
     flex: 1,

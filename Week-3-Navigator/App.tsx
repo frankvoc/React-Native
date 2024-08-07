@@ -8,33 +8,15 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-const Tab = createBottomTabNavigator();
-//const Drawer = createDrawerNavigator();
+//const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 export default function App(){
   return(
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName: any;
-      
-            if (route.name === 'Home') {
-              iconName = focused
-                ? 'home'
-                : 'home-outline';
-            } else if (route.name === 'Details') {
-              iconName = focused ? 'reader' : 'reader-outline';
-            }
-      
-            // You can return any component that you like here
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
-        })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Details" component={DetailsScreen} />
-      </Tab.Navigator>
+            <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Details" component={DetailsScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
@@ -75,21 +57,7 @@ export function DetailsScreen() {
     </View>
   );
 }
-export function ModalScreen() {
-  const navigation = useNavigation<DetailsScreenNavigation>();
 
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>This is a Modal Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() =>
-          navigation.navigate('Details', { itemId: 123, otherParam: 'test' })
-        }
-      />
-    </View>
-  );
-}
 
 export function ExtrasScreen() {
   const navigation = useNavigation<ExtrasScreenNavigationProp>();

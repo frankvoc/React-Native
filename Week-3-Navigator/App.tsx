@@ -5,6 +5,39 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+const Tab = createBottomTabNavigator();
+//const Drawer = createDrawerNavigator();
+export default function App(){
+  return(
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName: any;
+      
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'home'
+                : 'home-outline';
+            } else if (route.name === 'Details') {
+              iconName = focused ? 'reader' : 'reader-outline';
+            }
+      
+            // You can return any component that you like here
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray',
+        })}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Details" component={DetailsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
 export type StackParamList = {
   Home: undefined;
   Details: { itemId: number; otherParam?: string };
@@ -19,45 +52,16 @@ type ExtrasScreenNavigationProp = StackNavigationProp<StackParamList, 'Extras'>;
 
 const stack = createStackNavigator<StackParamList>();
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <stack.Navigator>
-        <stack.Screen name="Home" component={HomeScreen} />
-        <stack.Screen name="Details" component={DetailsScreen} />
-        <stack.Screen
-          name="ModalScreen"
-          component={ModalScreen}
-          options={{ presentation: 'modal' }}
-        />
-        <stack.Screen
-          name="Extras"
-          component={ExtrasScreen}
-          options={{ headerTitle: 'Extras' }}
-        />
-      </stack.Navigator>
-    </NavigationContainer>
-  );
-}
+
 export function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() =>
-          navigation.navigate('Details', { itemId: 123, otherParam: 'test' })
-        }
-      />
-      <Button
+      {/* <Button
         title="Go to Modal"
         onPress={() => navigation.navigate('ModalScreen')}
-      />
-      <Button
-        title="Go to Extras"
-        onPress={() => navigation.navigate('Extras')}
-      />
+      /> */}
     </View>
   );
 }
@@ -68,9 +72,6 @@ export function DetailsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
-      <Text>Item ID: {params.itemId}</Text>
-      <Text>Other Param: {params.otherParam}</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }

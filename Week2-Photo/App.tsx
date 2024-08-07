@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, TextInput, FlatList, Image, TouchableOpacity, Modal, StyleSheet, Platform } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
 interface ImageData {
   id: number;
@@ -9,6 +11,7 @@ const imageData: ImageData[] = [];
 for (let i = 1; i < 71; i++) {
   imageData.push({ id: i, url: `https://picsum.photos/id/${i}/200`});
 }
+
 const App = () => {
   const [filteredPhotos, setFilteredPhotos] = useState<ImageData[]>(imageData);
   const [selectedPhoto, setSelectedPhoto] = useState<ImageData | null>(null);

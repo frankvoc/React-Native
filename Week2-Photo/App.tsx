@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     height: 40,
-    borderWidth: 2,
+    borderWidth: 2,//hello
     marginBottom: 15,
     ...Platform.select({
       android: {

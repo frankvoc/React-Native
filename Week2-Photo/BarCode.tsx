@@ -18,10 +18,14 @@ const BarCodeScreen = () => {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }: { type: string, data: string }) => {
-    setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    if (type === 'org.iso.QRCode') {
+      setScanned(true);
+      alert(`QR code with data ${data} has been scanned!`);
+    } else {
+      alert('This is not a QR code. Please scan a QR code.');
+      setScanned(true);
+    }
   };
-
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
   }
@@ -45,6 +49,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection:'column'
+
   },
 });
 

@@ -8,6 +8,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { BarCodeScanner } from 'expo-barcode-scanner'
 //const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 export default function App(){
@@ -16,6 +17,7 @@ export default function App(){
             <Drawer.Navigator>
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Details" component={DetailsScreen} />
+        <Drawer.Screen name="BarCode" component={BarCodeScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -31,10 +33,13 @@ type DetailsScreenNavigation = StackNavigationProp<StackParamList, 'Details'>;
 type HomeScreenNavigationProp = StackNavigationProp<StackParamList, 'Home'>;
 type DetailsScreenRouteProp = RouteProp<StackParamList, 'Details'>;
 type ExtrasScreenNavigationProp = StackNavigationProp<StackParamList, 'Extras'>;
+type BarCodeScreenNavigationProp = StackNavigationProp<StackParamList,'BarCode'>;
 
 const stack = createStackNavigator<StackParamList>();
 
-
+export function BarCodeScreen(){
+  const navigation = useNavigation<BarCodeScreenNavigationProp>();
+}
 export function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   return (

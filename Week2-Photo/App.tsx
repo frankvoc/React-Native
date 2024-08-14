@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import WeatherScreen from './Weather';
+import BarCodeScreen from './BarCode';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -89,6 +90,9 @@ const DrawerContent = ({ navigation }: any) => (
     <TouchableOpacity onPress={() => navigation.navigate('Weather')}>
       <Text style={styles.drawerItem}>Weather</Text>
     </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('BarCode')}>
+      <Text style={styles.drawerItem}>BarCode</Text>
+    </TouchableOpacity>
   </View>
 );
 
@@ -112,6 +116,11 @@ const MainStack = () => {
       <Stack.Screen
         name="Weather"
         component={WeatherScreen}
+
+      />
+      <Stack.Screen
+        name="BarCode"
+        component={BarCodeScreen}
 
       />
     </Stack.Navigator>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import axios from 'axios';
 
 const BarCodeScreen = () => {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [scanned, setScanned] = useState<boolean>(false);
+  const [item,setItem] = useState<any>(null);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {

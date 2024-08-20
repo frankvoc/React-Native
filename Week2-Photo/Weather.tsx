@@ -4,7 +4,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast'
-import ForecastTabs from './ForecastTab';
 
 const Drawer = createDrawerNavigator();
 

@@ -13,7 +13,7 @@ const CurrentWeather = () =>{
     return <Text>Error: {error}</Text>
   }
 
-
+//w
   return (
     <View style={styles.container}>
       <Text style={styles.locationText}>{weather?.location.name}</Text>

@@ -1,13 +1,26 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import CurrentWeather from './CurrentWeather';
 
-const WeatherScreen = ({ navigation }: any) => {
+const Drawer = createDrawerNavigator();
+
+const WeatherDrawer = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        <Text>Weather Screen</Text>
-      </View>
-    </SafeAreaView>
+    <Drawer.Navigator initialRouteName='CurrentWeather'>
+      <Drawer.Screen name ="CurrentWeather" component={CurrentWeather} options={{title: "Current Weather"}}/>
+
+      {/* <Drawer.Screen name= "Forecast" component={() => <></>} options={{title: "Forecast"}}/> */}
+    </Drawer.Navigator>
+  )
+}
+
+const WeatherScreen = () => {
+  return (
+    <NavigationContainer independent={true}>
+      <WeatherDrawer />
+    </NavigationContainer>
   );
 };
 

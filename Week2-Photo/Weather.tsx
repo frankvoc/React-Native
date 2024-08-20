@@ -11,7 +11,6 @@ const WeatherDrawer = () => {
   return (
     <Drawer.Navigator initialRouteName='CurrentWeather'>
       <Drawer.Screen name ="CurrentWeather" component={CurrentWeather} options={{title: "Current Weather"}}/>
-      <Drawer.Screen name="ForecastTabs" component={ForecastTabs} />
 
       <Drawer.Screen name= "Forecast" component={Forecast} options={{title: "Forecast"}}/>
     </Drawer.Navigator>

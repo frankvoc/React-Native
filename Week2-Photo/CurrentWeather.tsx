@@ -1,6 +1,6 @@
 import weatherHook from './Custom-Hooks/weatherHook'
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native'; 
+import { View, Text, StyleSheet, Image, TextInput } from 'react-native'; 
 
 const CurrentWeather = () =>{
   const {weather,loading,error} = weatherHook('Westerly');

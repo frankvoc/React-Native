@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import WeatherScreen from './Weather';
 import BarCodeScreen from './BarCode';
+import ProductsDetails from './ProductsDetails';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -116,12 +117,15 @@ const MainStack = () => {
       <Stack.Screen
         name="Weather"
         component={WeatherScreen}
-
       />
       <Stack.Screen
         name="BarCode"
         component={BarCodeScreen}
-
+      />
+      <Stack.Screen
+        name="ProductsDetails"
+        component={ProductsDetails}
+        options={{title: 'Product Details'}}
       />
     </Stack.Navigator>
   );

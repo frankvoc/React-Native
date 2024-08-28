@@ -1,6 +1,6 @@
 import weatherHook from './Custom-Hooks/weatherHook'
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native'; 
+import { View, Text, StyleSheet, Image, TextInput } from 'react-native'; 
 
 const CurrentWeather = () =>{
   const {weather,loading,error} = weatherHook('Westerly');
@@ -13,7 +13,7 @@ const CurrentWeather = () =>{
     return <Text>Error: {error}</Text>
   }
 
-//w
+//weather
   return (
     <View style={styles.container}>
       <Text style={styles.locationText}>{weather?.location.name}</Text>

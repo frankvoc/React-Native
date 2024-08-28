@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from './types';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-type RootStackParamList = {
-    Scanner: undefined;
-    ProducstDetails: { url: string };
-    Favorites: undefined;
-}; 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 type ProductDetailRouteProp = RouteProp<RootStackParamList, 'ProductsDetails'>;
 
 interface ProductDetailScreenProps {
@@ -21,7 +17,7 @@ interface Product {
     description: string;
     price: number;
     category: string;
-    rating:string;
+    rating: string;
     thumbnail: string;
     url: string;
 }
@@ -31,9 +27,9 @@ const ProductDetail: React.FC<ProductDetailScreenProps> = ({ route }) => {
     const [fetchedProduct, setFetchedProduct] = useState<Product | null>(null);
     const [isFavorite, setIsFavorite] = useState(false);
     const [loading, setLoading] = useState(true);
-
+    const testurl = 'https://dummyjson.com/products/3';
     useEffect(() => {
-        fetchProduct(url);
+        fetchProduct(testurl);
     }, [url]);
     useEffect(() => {
         if (fetchedProduct) {
@@ -44,23 +40,29 @@ const ProductDetail: React.FC<ProductDetailScreenProps> = ({ route }) => {
     const fetchProduct = async (url: string) => {
         try {
             const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
             const data: Product = await response.json();
             setFetchedProduct(data);
-            setLoading(false);
         } catch (error) {
-            console.log(error);
+            console.error('Failed to fetch product:', error);
+            setFetchedProduct(null);
+        } finally {
             setLoading(false);
         }
     };
+
     const checkIfFavorite = async (productId: number) => {
         try {
             const storedFavorites = await AsyncStorage.getItem('favorites');
             const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
             setIsFavorite(favorites.some((item: Product) => item.id === productId));
         } catch (error) {
-            console.log(error);
+            console.error('Error checking if favorite:', error);
         }
     };
+
     const toggleFavorite = async () => {
         try {
             const storedFavorites = await AsyncStorage.getItem('favorites');
@@ -75,16 +77,18 @@ const ProductDetail: React.FC<ProductDetailScreenProps> = ({ route }) => {
             await AsyncStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFavorite(!isFavorite);
         } catch (error) {
-            console.log(error);
+            console.error('Error toggling favorite:', error);
         }
     };
+
     if (loading) {
-        return <Text>Loading...</Text>;
+        return <ActivityIndicator size="large" color="#0000ff" />;
     }
 
     if (!fetchedProduct) {
-        return <Text>Something went Wrong</Text>;
+        return <Text>Something went wrong</Text>;
     }
+
     return (
         <View style={styles.container}>
             <Image source={{ uri: fetchedProduct.thumbnail }} style={styles.thumbnail} />
@@ -99,6 +103,7 @@ const ProductDetail: React.FC<ProductDetailScreenProps> = ({ route }) => {
         </View>
     );
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './types'
 
-type BarcodeScannerScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Scanner'>;
+type BarcodeScannerScreenNavigationProp = StackNavigationProp<RootStackParamList, 'BarCode'>;
 
 const BarcodeScannerScreen = () => {
     const [hasPermission, setHasPermission] = useState<boolean | null>(null);

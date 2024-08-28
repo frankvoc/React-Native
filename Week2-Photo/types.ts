@@ -1,6 +1,12 @@
-// types.ts
+
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 export type RootStackParamList = {
-    Scanner: undefined; // No parameters for this screen
-    ProductsDetails: { url: string }; // Expecting a URL parameter
-    Favorites: undefined; // No parameters for this screen
+    BarCode: undefined;
+    ProductsDetails: { product: string };
+    Favorites: undefined;
 };
+
+export type ProductsDetailsScreenProp = StackNavigationProp<RootStackParamList, 'ProductsDetails'>;
+export type ProductsDetailsRouteProp = RouteProp<RootStackParamList, 'ProductsDetails'>;

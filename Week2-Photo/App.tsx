@@ -5,7 +5,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import WeatherScreen from './Weather';
 import BarCodeScreen from './BarCode';
-
+import QRTabs from './QRTabs';
+import ProductDetail from './ProductsDetails';
+export type RootStackParamList = {
+  Home: undefined;
+  PhotoDetail: { photo: ImageData };
+  Weather: undefined;
+  QRTabs: undefined;
+  ProductsDetails: { url: string };
+};
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -90,7 +98,7 @@ const DrawerContent = ({ navigation }: any) => (
     <TouchableOpacity onPress={() => navigation.navigate('Weather')}>
       <Text style={styles.drawerItem}>Weather</Text>
     </TouchableOpacity>
-    <TouchableOpacity onPress={() => navigation.navigate('BarCode')}>
+    <TouchableOpacity onPress={() => navigation.navigate('QRTabs')}>
       <Text style={styles.drawerItem}>BarCode</Text>
     </TouchableOpacity>
   </View>
@@ -116,13 +124,14 @@ const MainStack = () => {
       <Stack.Screen
         name="Weather"
         component={WeatherScreen}
-
       />
       <Stack.Screen
-        name="BarCode"
-        component={BarCodeScreen}
-
+        name="QRTabs"
+        component={QRTabs}
+        options={{ title: 'Scanner' }}
       />
+      <Stack.Screen
+        name="ProductsDetails" component={ProductDetail}/>
     </Stack.Navigator>
   );
 };

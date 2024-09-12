@@ -30,7 +30,7 @@ const Forecast = ({route}:any)=>{
         keyExtractor={(item) => item.date}
         />
     );
-};
+};//forecast
 const styles = StyleSheet.create({
     forecastItem: {
       padding: 20,

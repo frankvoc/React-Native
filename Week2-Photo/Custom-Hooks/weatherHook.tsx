@@ -32,7 +32,7 @@ interface weatherData{
         }>;
       };
     }    
-
+//hook
 const weatherHook = (location: string)=>{
     const [weather, setWeather] = useState<weatherData | null>(null);
     const [loading, setLoading] = useState<boolean>(true);

@@ -4,7 +4,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast'
-import ForecastTabs from './ForecastTab';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,7 +11,6 @@ const WeatherDrawer = () => {
   return (
     <Drawer.Navigator initialRouteName='CurrentWeather'>
       <Drawer.Screen name ="CurrentWeather" component={CurrentWeather} options={{title: "Current Weather"}}/>
-      <Drawer.Screen name="ForecastTabs" component={ForecastTabs} />
 
       <Drawer.Screen name= "Forecast" component={Forecast} options={{title: "Forecast"}}/>
     </Drawer.Navigator>
